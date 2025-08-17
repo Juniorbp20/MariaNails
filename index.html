@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>María Nails - Salón de Uñas</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Iconos de Font Awesome para redes sociales -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Cabecera con logo/menú -->
+    <header>
+        <!-- Logo de María Nails -->
+        <div class="logo-container">
+        <img src="img/Logo-Maria_nails.jpg" alt="Logo María Nails" class="logo">
+    </div>
+
+        <h1>María Nails</h1>
+        <p class="eslogan">Belleza y cuidado para tus uñas</p>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre María</a></li>
+                <li><a href="#servicios">Servicios y Precios</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Sección de Inicio -->
+        <section id="inicio" class="hero">
+            <h2>Bienvenidas a María Nails</h2>
+            <p>En <strong>María Nails</strong> nos especializamos en manicura, pedicura y uñas acrílicas. Ofrecemos un espacio relajante donde la calidad y la higiene son nuestra prioridad.</p>
+            <button class="cta-button">¡Reserva tu cita!</button>
+        </section>
+
+        <!-- Sección Sobre María -->
+        <section id="sobre-mi">
+            <h2>Sobre María</h2>
+            <div class="sobre-content">
+                <img src="img/MariaPerfil.jpg" alt="María Nails" class="sobre-img">
+                <p>Hola, soy María, técnica en uñas con más de 10 años de experiencia. Mi pasión es realzar la belleza de tus manos y pies con diseños personalizados y tratamientos profesionales. ¡Te espero en mi salón!</p>
+            </div>
+        </section>
+
+        <!-- Sección Servicios y Precios -->
+        <section id="servicios">
+            <h2>Servicios y Precios</h2>
+            <div class="servicios-grid">
+                <div class="servicio">
+                    <h3>Manicura básica</h3>
+                    <p>Incluye corte, limado y esmaltado.</p>
+                    <span class="precio">$15.000</span>
+                </div>
+                <div class="servicio">
+                    <h3>Uñas acrílicas</h3>
+                    <p>Extensiones con acabado natural o decorado.</p>
+                    <span class="precio">$35.000</span>
+                </div>
+                <div class="servicio">
+                    <h3>Pedicura spa</h3>
+                    <p>Exfoliación, masaje y esmaltado premium.</p>
+                    <span class="precio">$25.000</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Galería -->
+<section id="galeria">
+    <h2>Nuestros Trabajos</h2>
+    <div class="gallery-grid" id="gallery-container"></div>
+    <div class="pagination">
+        <button id="prev-btn">⬅ Anterior</button>
+        <span id="page-info">Página 1</span>
+        <button id="next-btn">Siguiente ➡</button>
+    </div>
+</section>
+        <script src="script.js"></script>
+
+        <!-- Sección Contacto -->
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <div class="contacto-content">
+               <p><i class="fas fa-map-marker-alt"></i> <strong>Dirección:</strong> Calle Hermanas Mirabal, Tenares. Salón de Griselda, 2do nivel.</p>
+                <p><a href="https://maps.app.goo.gl/3aH5S6EMcmmRyyUt8" target="_blank"><i class="fas fa-map-marker-alt"></i> Ver en Google Maps</a></p>
+                <p><i class="fas fa-phone"></i> Teléfono: +1 829 338 8282</p>
+                <p><i class="fas fa-clock"></i> Horario: Lunes a Sábado, 9am - 6pm</p>
+                <div class="redes-sociales">
+                    <a href="https://www.instagram.com/____marianails/?hl=es" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="https://wa.me/+18293388282" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 MaríaNails. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
