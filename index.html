@@ -1,28 +1,294 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>María Nails - Salón de Uñas</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Iconos de Font Awesome para redes sociales -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-primario: #ff6b8b;
+            --color-secundario: #f35396;
+            --color-fondo: #fff9f9;
+            --color-texto: #333;
+            --color-bordes: #e0c9d1;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            line-height: 1.6;
+        }
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 1.5rem 0;
+            position: relative;
+        }
+        header h1 {
+            color: var(--color-primario);
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .eslogan {
+            color: var(--color-secundario);
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+        .logo-container {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .logo {
+            max-width: 180px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--color-texto);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: var(--color-primario);
+        }
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: linear-gradient(135deg, rgba(255, 107, 139, 0.1), rgba(255, 209, 102, 0.1));
+        }
+        .hero h2 {
+            font-size: 2.2rem;
+            color: var(--color-primario);
+        }
+        .cta-button {
+            background-color: var(--color-primario);
+            color: white;
+            border: none;
+            padding: 0.8rem 0.6rem;
+            font-size: 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 1rem;
+        }
+        .cta-button:hover {
+            background-color: #e05575;
+        }
+        #sobre-mi {
+            padding: 3rem 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .sobre-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-direction: column;
+        }
+        .sobre-content img {
+            border-radius: 50%;
+            border: 3px solid var(--color-bordes);
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+        #servicios {
+            background-color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 2rem auto;
+        }
+        .servicio {
+            background-color: var(--color-fondo);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        .servicio:hover {
+            transform: translateY(-5px);
+        }
+        .servicio h3 {
+            color: var(--color-primario);
+        }
+        .precio {
+            display: inline-block;
+            background-color: var(--color-secundario);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            margin-top: 0.5rem;
+            font-weight: bold;
+        }
+        #galeria {
+            padding: 3rem 1rem;
+            text-align: center;
+            background-color: var(--color-fondo);
+        }
+        #galeria h2 {
+            color: var(--color-primario);
+            margin-bottom: 2rem;
+        }
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+        .gallery-item {
+            aspect-ratio: 3 / 4;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            background: #f8f8f8;
+            cursor: pointer;
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            margin: 40px 0 20px;
+        }
+        .pagination button {
+            background-color: var(--color-primario);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            min-width: 120px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .pagination button:hover:not(:disabled) {
+            background-color: #e05575;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        .pagination button:disabled {
+            background-color: #e0e0e0;
+            color: #9e9e9e;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+        #contacto {
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        .contacto-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .redes-sociales {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .redes-sociales a {
+            color: var(--color-primario);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .redes-sociales i {
+            font-size: 1.2rem;
+        }
+        footer {
+            background-color: var(--color-primario);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        @media (max-width: 900px) {
+            .gallery-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .gallery-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .pagination {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .sobre-content {
+                flex-direction: column;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        @media (max-width: 400px) {
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-<body>
-    <!-- Cabecera con logo/menú -->
-    <header>
-        <!-- Logo de María Nails -->
-        <div class="logo-container">
-        <img src="img/Logo-Maria_nails.jpg" alt="Logo María Nails" class="logo">
-    </div>
 
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="img/Logo-Maria_nails.jpg" alt="Logo María Nails" class="logo">
+        </div>
         <h1>María Nails</h1>
         <p class="eslogan">Belleza y cuidado para tus uñas</p>
         <nav>
             <ul>
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#sobre-mi">Sobre María</a></li>
-                <li><a href="#servicios">Servicios y Precios</a></li>
+                <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#galeria">Galería</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
@@ -30,66 +296,80 @@
     </header>
 
     <main>
-        <!-- Sección de Inicio -->
         <section id="inicio" class="hero">
             <h2>Bienvenidas a María Nails</h2>
-            <p>En <strong>María Nails</strong> nos especializamos en manicura, pedicura y uñas acrílicas. Ofrecemos un espacio relajante donde la calidad y la higiene son nuestra prioridad.</p>
-            <button class="cta-button">¡Reserva tu cita!</button>
+            <p>En <strong>María Nails</strong> nos especializamos en manicura, pedicura y uñas acrílicas. Ofrecemos un
+                espacio relajante donde la calidad y la higiene son nuestra prioridad.</p>
+            <button class="cta-button" onclick="window.location.href='https://wa.me/+18293388282'">
+                ¡Reserva tu cita!
+            </button>
         </section>
 
-        <!-- Sección Sobre María -->
         <section id="sobre-mi">
             <h2>Sobre María</h2>
             <div class="sobre-content">
                 <img src="img/MariaPerfil.jpg" alt="María Nails" class="sobre-img">
-                <p>Hola, soy María, técnica en uñas con más de 10 años de experiencia. Mi pasión es realzar la belleza de tus manos y pies con diseños personalizados y tratamientos profesionales. ¡Te espero en mi salón!</p>
+                <p>Hola, soy María, técnica en uñas con más de 10 años de experiencia. Mi pasión es realzar la belleza
+                    de tus manos y pies con diseños personalizados y tratamientos profesionales. ¡Te espero en mi salón!
+                </p>
             </div>
         </section>
 
-        <!-- Sección Servicios y Precios -->
         <section id="servicios">
-            <h2>Servicios y Precios</h2>
+            <h2>Servicios</h2>
             <div class="servicios-grid">
-                <div class="servicio">
-                    <h3>Manicura básica</h3>
-                    <p>Incluye corte, limado y esmaltado.</p>
-                    <span class="precio">$15.000</span>
+                <div class="servicio" data-descripcion="Extensiones resistentes y duraderas con acabado perfecto. Ideal para quienes buscan uñas largas y fuertes.">
+                    <h3>Sistema de Acrílico</h3>
+                    <p>Extensiones resistentes y duraderas con acabado perfecto.</p>
+                    <span class="precio">Descripción</span>
                 </div>
-                <div class="servicio">
-                    <h3>Uñas acrílicas</h3>
-                    <p>Extensiones con acabado natural o decorado.</p>
-                    <span class="precio">$35.000</span>
+                <div class="servicio" data-descripcion="Uñas naturales con brillo intenso y mayor resistencia. Perfecto para un look elegante y natural.">
+                    <h3>Sistema de Gel</h3>
+                    <p>Uñas naturales con brillo intenso y mayor resistencia.</p>
+                    <span class="precio">Descripción</span>
                 </div>
-                <div class="servicio">
-                    <h3>Pedicura spa</h3>
-                    <p>Exfoliación, masaje y esmaltado premium.</p>
-                    <span class="precio">$25.000</span>
+                <div class="servicio" data-descripcion="Cuidado completo de tus manos, incluye limado, cutícula y esmaltado profesional.">
+                    <h3>Manicura</h3>
+                    <p>Cuidado completo de tus manos y esmaltado profesional.</p>
+                    <span class="precio">Descripción</span>
+                </div>
+                <div class="servicio" data-descripcion="Tratamiento spa para tus pies, incluye exfoliación, masaje relajante y esmaltado.">
+                    <h3>Pedicura</h3>
+                    <p>Tratamiento spa para tus pies, incluye masaje relajante.</p>
+                    <span class="precio">Descripción</span>
+                </div>
+            </div>
+            <div id="modalServicio" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:10000; justify-content:center; align-items:center;">
+                <div style="background:#fff; padding:2rem 1.5rem; border-radius:12px; max-width:90vw; box-shadow:0 4px 24px rgba(0,0,0,0.2); position:relative;">
+                    <span id="cerrarModalServicio" style="position:absolute; top:10px; right:18px; font-size:2rem; color:#ff6b8b; cursor:pointer;">&times;</span>
+                    <h3 id="modalServicioTitulo" style="margin-top:0;"></h3>
+                    <p id="modalServicioDescripcion"></p>
                 </div>
             </div>
         </section>
 
-        <!-- Sección Galería -->
-<section id="galeria">
-    <h2>Nuestros Trabajos</h2>
-    <div class="gallery-grid" id="gallery-container"></div>
-    <div class="pagination">
-        <button id="prev-btn">⬅ Anterior</button>
-        <span id="page-info">Página 1</span>
-        <button id="next-btn">Siguiente ➡</button>
-    </div>
-</section>
-        <script src="script.js"></script>
+        <section id="galeria">
+            <h2>Nuestros Trabajos</h2>
+            <div class="gallery-container" id="imageGallery"></div>
+            <div class="pagination">
+                <button id="prevPage" disabled>Anterior</button>
+                <span id="pageInfo">Página 1 de 3</span>
+                <button id="nextPage">Siguiente</button>
+            </div>
+        </section>
 
-        <!-- Sección Contacto -->
         <section id="contacto">
             <h2>Contacto</h2>
             <div class="contacto-content">
-               <p><i class="fas fa-map-marker-alt"></i> <strong>Dirección:</strong> Calle Hermanas Mirabal, Tenares. Salón de Griselda, 2do nivel.</p>
-                <p><a href="https://maps.app.goo.gl/3aH5S6EMcmmRyyUt8" target="_blank"><i class="fas fa-map-marker-alt"></i> Ver en Google Maps</a></p>
+                <p><i class="fas fa-map-marker-alt"></i> <strong>Dirección:</strong> Calle Hermanas Mirabal, Tenares.
+                    Salón de Griselda, 2do nivel.</p>
+                <p><a href="https://maps.app.goo.gl/3aH5S6EMcmmRyyUt8" target="_blank"><i
+                            class="fas fa-map-marker-alt"></i> Ver en Google Maps</a></p>
                 <p><i class="fas fa-phone"></i> Teléfono: +1 829 338 8282</p>
                 <p><i class="fas fa-clock"></i> Horario: Lunes a Sábado, 9am - 6pm</p>
                 <div class="redes-sociales">
-                    <a href="https://www.instagram.com/____marianails/?hl=es" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="https://www.instagram.com/____marianails/?hl=es" target="_blank"><i
+                            class="fab fa-instagram"></i> Instagram</a>
                     <a href="https://wa.me/+18293388282" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 </div>
             </div>
@@ -97,7 +377,227 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 MaríaNails. Todos los derechos reservados.</p>
+        <p>&copy; 2025 María Nails. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        // Modal de descripción de servicios
+        document.querySelectorAll('.servicio').forEach(function(servicio) {
+            servicio.addEventListener('click', function() {
+                document.getElementById('modalServicioTitulo').textContent = this.querySelector('h3').textContent;
+                document.getElementById('modalServicioDescripcion').textContent = this.getAttribute('data-descripcion');
+                document.getElementById('modalServicio').style.display = 'flex';
+            });
+        });
+        document.getElementById('cerrarModalServicio').onclick = function() {
+            document.getElementById('modalServicio').style.display = 'none';
+        };
+        document.getElementById('modalServicio').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+            }
+        });
+
+        // Galería de imágenes y paginación
+        const galleryImages = [
+            { src: "img/galeria/1.jpg"},
+            { src: "img/galeria/2.jpg"},
+            { src: "img/galeria/3.jpg"},
+            { src: "img/galeria/4.jpg"},
+            { src: "img/galeria/5.jpg"},
+            { src: "img/galeria/6.jpg"},
+            { src: "img/galeria/7.jpg"},
+            { src: "img/galeria/8.jpg"},
+            { src: "img/galeria/9.jpg"},
+            { src: "img/galeria/10.jpg"},
+            { src: "img/galeria/11.jpg"},
+            { src: "img/galeria/12.jpg"},
+            { src: "img/galeria/13.jpg"},
+            { src: "img/galeria/14.jpg"},
+            { src: "img/galeria/15.jpg"},
+            { src: "img/galeria/16.jpg"},
+            { src: "img/galeria/17.jpg"},
+            { src: "img/galeria/18.jpg"},
+            { src: "img/galeria/19.jpg"},
+            { src: "img/galeria/20.jpg"},
+            { src: "img/galeria/21.jpg"},
+            { src: "img/galeria/22.jpg"},
+            { src: "img/galeria/23.jpg"},
+            { src: "img/galeria/24.jpg"},
+            { src: "img/galeria/25.jpg"}
+        ];
+        const galleryContainer = document.getElementById('imageGallery');
+        galleryImages.forEach((image) => {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+            galleryItem.innerHTML = `<img src="${image.src}">`;
+            galleryContainer.appendChild(galleryItem);
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const itemsPerPage = 12;
+            let currentPage = 1;
+            const totalPages = Math.ceil(galleryItems.length / itemsPerPage);
+
+            function updatePagination() {
+                document.getElementById('pageInfo').textContent = `Página ${currentPage} de ${totalPages}`;
+                document.getElementById('prevPage').disabled = (currentPage === 1);
+                document.getElementById('nextPage').disabled = (currentPage === totalPages);
+            }
+            function showCurrentPage() {
+                const startIndex = (currentPage - 1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
+                galleryItems.forEach((item, index) => {
+                    item.style.display = (index >= startIndex && index < endIndex) ? 'block' : 'none';
+                });
+                updatePagination();
+            }
+            document.getElementById('prevPage').addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    showCurrentPage();
+                }
+            });
+            document.getElementById('nextPage').addEventListener('click', () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    showCurrentPage();
+                }
+            });
+            showCurrentPage();
+
+            // Modal galería
+            const modal = document.createElement('div');
+            modal.id = 'imageModal';
+            modal.style.display = 'none';
+            modal.style.position = 'fixed';
+            modal.style.zIndex = '9999';
+            modal.style.left = '0';
+            modal.style.top = '0';
+            modal.style.width = '100vw';
+            modal.style.height = '100vh';
+            modal.style.background = 'rgba(0,0,0,0.8)';
+            modal.style.justifyContent = 'center';
+            modal.style.alignItems = 'center';
+            modal.style.flexDirection = 'column';
+            modal.innerHTML = `
+                <span id="closeModal" style="
+                    color: #fff;
+                    font-size: 2.5rem;
+                    position: absolute;
+                    top: 30px;
+                    right: 40px;
+                    cursor: pointer;
+                    z-index: 10001;
+                    font-family: Arial, sans-serif;
+                ">&times;</span>
+                <button id="prevImg" style="
+                    position: absolute;
+                    left: 30px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background: rgba(255,255,255,0.7);
+                    border: none;
+                    border-radius: 50%;
+                    width: 48px;
+                    height: 48px;
+                    font-size: 2rem;
+                    color: #ff6b8b;
+                    cursor: pointer;
+                    z-index: 10001;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                ">&#8249;</button>
+                <img id="modalImg" src="" style="
+                    max-width: 90vw;
+                    max-height: 80vh;
+                    border-radius: 12px;
+                    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+                    background: #fff;
+                ">
+                <button id="nextImg" style="
+                    position: absolute;
+                    right: 30px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background: rgba(255,255,255,0.7);
+                    border: none;
+                    border-radius: 50%;
+                    width: 48px;
+                    height: 48px;
+                    font-size: 2rem;
+                    color: #ff6b8b;
+                    cursor: pointer;
+                    z-index: 10001;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                ">&#8250;</button>
+            `;
+            modal.style.display = 'flex';
+            modal.style.visibility = 'hidden';
+            document.body.appendChild(modal);
+
+            let currentModalIndex = 0;
+            galleryItems.forEach((item, idx) => {
+                item.addEventListener('click', function() {
+                    currentModalIndex = idx;
+                    document.getElementById('modalImg').src = galleryImages[currentModalIndex].src;
+                    modal.style.visibility = 'visible';
+                    updateModalButtons();
+                });
+            });
+            document.getElementById('closeModal').onclick = function() {
+                modal.style.visibility = 'hidden';
+                document.getElementById('modalImg').src = '';
+            };
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.visibility = 'hidden';
+                    document.getElementById('modalImg').src = '';
+                }
+            });
+            function updateModalButtons() {
+                document.getElementById('prevImg').disabled = currentModalIndex === 0;
+                document.getElementById('nextImg').disabled = currentModalIndex === galleryImages.length - 1;
+            }
+            document.getElementById('prevImg').onclick = function(e) {
+                e.stopPropagation();
+                if (currentModalIndex > 0) {
+                    currentModalIndex--;
+                    document.getElementById('modalImg').src = galleryImages[currentModalIndex].src;
+                    updateModalButtons();
+                }
+            };
+            document.getElementById('nextImg').onclick = function(e) {
+                e.stopPropagation();
+                if (currentModalIndex < galleryImages.length - 1) {
+                    currentModalIndex++;
+                    document.getElementById('modalImg').src = galleryImages[currentModalIndex].src;
+                    updateModalButtons();
+                }
+            };
+            document.addEventListener('keydown', function(e) {
+                if (modal.style.visibility === 'visible') {
+                    if (e.key === 'ArrowLeft' && currentModalIndex > 0) {
+                        currentModalIndex--;
+                        document.getElementById('modalImg').src = galleryImages[currentModalIndex].src;
+                        updateModalButtons();
+                    }
+                    if (e.key === 'ArrowRight' && currentModalIndex < galleryImages.length - 1) {
+                        currentModalIndex++;
+                        document.getElementById('modalImg').src = galleryImages[currentModalIndex].src;
+                        updateModalButtons();
+                    }
+                    if (e.key === 'Escape') {
+                        modal.style.visibility = 'hidden';
+                        document.getElementById('modalImg').src = '';
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
